@@ -1,10 +1,18 @@
-from tinydb import TinyDB
+from tinydb import TinyDB, Query
 from tinydb.database import Document
+from randomusers import get_users_by_gender
 
 
 db = TinyDB('db.json', indent=4)
 
-users = db.table(name='users')
+males = db.table('males')
+females = db.table('females')
 
-# print(users.all())
-print(users.get(doc_id=31))
+
+q = Query()
+
+fields = {
+    "age": 17
+}
+
+print(males.count(cond=q.country == 'Brazil'))
